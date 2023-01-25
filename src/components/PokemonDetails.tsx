@@ -10,28 +10,18 @@ const PokemonDetails = (props: PokemonDetailsProp) => {
   const { pokemon, index } = props;
   return (
     <div
-      className="card text-center m-3"
+      className="card shadow text-center m-3"
       key={index}
-      style={{ width: "17rem" }}
+      style={{ width: "13rem" }}
     >
       <img className="card-img" src={pokemon.imgUrl} alt="" />
       <div className="card-body">
-        {/* <h3 className="card-title">
-          <Link to={`/viewdetails/${pokemon.name}`} state={pokemon}>
-            {pokemon.name}
-          </Link>
-        </h3> */}
         <h3 className="card-title ">
-          <Link to={`/viewdetails/`} className="text-decoration-none text-black" state={pokemon}>
-            {pokemon.name}
-          </Link>
+          {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
         </h3>
-        <button
-          className="btn btn-primary"
-          // onClick={() => setCurrentPokemon(index)}
-        >
-          Show Details
-        </button>
+        <Link to={`/viewdetails/${pokemon.name}`} state={pokemon}>
+          <button className="btn btn-primary">Show Details</button>
+        </Link>
       </div>
     </div>
   );

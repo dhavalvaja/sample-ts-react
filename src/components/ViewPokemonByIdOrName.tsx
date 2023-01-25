@@ -16,7 +16,7 @@ export default function ViewPokemonByIdOrName() {
             <div className="card-body">
               {/* <h3 className="card-title">{pokemon.name}</h3> */}
               <p>Name: {pokemon.name}</p>
-              <p>Power: {pokemon.width}</p>
+              <p>Power: {pokemon.weight}</p>
               <p>Color: {pokemon.height}</p>
             </div>
           </>

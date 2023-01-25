@@ -6,11 +6,13 @@ import ViewPokemon from "./components/ViewPokemon";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage";
 import ViewPokemonByIdOrName from "./components/ViewPokemonByIdOrName";
-import PokemonPage from "./PokemonPage";
+import PokemonPage from "./components/PokemonPage";
+import HomePage from "./HomePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <HomePage />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -19,15 +21,15 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "viewdetails/",
+        path: "viewdetails/:nameOrId",
         element: <ViewPokemon />,
         errorElement: <ErrorPage />,
       },
-      {
-        path: "viewdetails/:nameOrId",
-        element: <ViewPokemonByIdOrName />,
-        errorElement: <ErrorPage />,
-      },
+      // {
+      //   path: "viewdetails/:nameOrId",
+      //   element: <ViewPokemonByIdOrName />,
+      //   errorElement: <ErrorPage />,
+      // },
     ],
   },
 ]);
