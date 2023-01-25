@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Pokemon } from "./Pokemon";
+import { fetchMorePokemon, fetchPokemon } from "./PokemonAPI";
 
 export default function HomePage() {
-  const [pokemonsCount, setPokemonsCount] = useState(0);
-
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [msg, setMsg] = useState("Loading...");
 
   const navigate = useNavigate();
-  function fetchPokemon() {
+
+  function fetchPokemon1() {
     if (searchQuery !== "") {
       let temp = searchQuery.toLowerCase();
       navigate(`/viewdetails/${temp}`);
     }
     setSearchQuery("");
+  }
+
+  useEffect(() => {
+    fetchPokemonAsyncAwait();
+  }, []);
+
+  async function fetchPokemonAsyncAwait() {
+    try {
+      const pokemons = await fetchPokemon();
+      setPokemons(pokemons);
+    } catch (error: any) {
+      setMsg(error.m);
+    }
   }
 
   return (
@@ -28,17 +44,19 @@ export default function HomePage() {
         </h1>
         <div className="d-flex">
           <input
-          className="form-control"
+            className="form-control"
             type="text"
             name="search"
             id="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="btn btn-secondary mx-3" onClick={fetchPokemon}>Search</button>
+          <button className="btn btn-secondary mx-3" onClick={fetchPokemon1}>
+            Search
+          </button>
         </div>
       </div>
-      <Outlet></Outlet>
+      <Outlet context={{ pokemons, setPokemons, msg }}></Outlet>
     </>
   );
 }

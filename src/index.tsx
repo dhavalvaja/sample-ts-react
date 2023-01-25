@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ViewPokemon from "./components/ViewPokemon";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage";
-import ViewPokemonByIdOrName from "./components/ViewPokemonByIdOrName";
 import PokemonPage from "./components/PokemonPage";
 import HomePage from "./HomePage";
 
@@ -25,11 +24,6 @@ const router = createBrowserRouter([
         element: <ViewPokemon />,
         errorElement: <ErrorPage />,
       },
-      // {
-      //   path: "viewdetails/:nameOrId",
-      //   element: <ViewPokemonByIdOrName />,
-      //   errorElement: <ErrorPage />,
-      // },
     ],
   },
 ]);

@@ -1,29 +1,26 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Pokemon } from "../Pokemon";
 import { useState, useEffect } from "react";
 import { fetchPokemonByNameOrId } from "../PokemonAPI";
 
 export default function ViewPokemon() {
-  // const location = useLocation();
-  // const pokemon: Pokemon = location.state;
   const { nameOrId } = useParams();
-
   const [pokemon, setPokemon] = useState<Pokemon>();
   const [error, setError] = useState("");
 
-  async function fetch() {
-    if (nameOrId) {
-      try {
-        const temp = await fetchPokemonByNameOrId(nameOrId);
-        setPokemon(temp);
-      } catch (error: any) {
-        setError(error.response.data);
-      }
-    }
-  }
   const navigate = useNavigate();
 
   useEffect(() => {
+    async function fetch() {
+      if (nameOrId) {
+        try {
+          const temp = await fetchPokemonByNameOrId(nameOrId);
+          setPokemon(temp);
+        } catch (error: any) {
+          setError(error.response.data);
+        }
+      }
+    }
     fetch();
   }, [nameOrId]);
 
@@ -52,14 +49,14 @@ export default function ViewPokemon() {
               </p>
               <p className="fw-semibold">Height: {pokemon.height}</p>
               <p className="fw-semibold">Weight: {pokemon.weight}</p>
-          <button
-            className="btn btn-dark "
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Go back
-          </button>
+              <button
+                className="btn btn-dark "
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                Go back
+              </button>
             </div>
           </div>
         </div>
