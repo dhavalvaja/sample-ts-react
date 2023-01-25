@@ -1,15 +1,15 @@
 import { Pokemon } from "../Pokemon";
 
 interface PokemonDetailsProp {
-  pokemon: Pokemon;
-  index: number;
-  setCurrentPokemon: Function;
+  pokemon: Pokemon
+  index: number
+  setCurrentPokemon: Function
 }
 
 const PokemonDetails = (props: PokemonDetailsProp) => {
   const { pokemon, index, setCurrentPokemon } = props;
   return (
-    <div className="card text-center m-3" key={index} style={{ width: "270px" }}>
+    <div className="card text-center m-3" key={index} style={{ width: "17rem" }}>
       <img
         className="card-img"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
