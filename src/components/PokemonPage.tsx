@@ -1,31 +1,24 @@
 import { useOutletContext } from "react-router-dom";
+import usePokemonApi from "../hooks/usePokemonApi";
 import { Pokemon } from "../Pokemon";
-import { fetchMorePokemon } from "../PokemonAPI";
 import PokemonDetails from "./PokemonDetails";
 
 interface PokemonsContext {
   pokemons: Pokemon[];
-  setPokemons: Function;
   msg: string;
-  loadMore?: Function;
+  searchedPokemons: Pokemon[];
 }
 
 export default function PokemonPage() {
   const context: PokemonsContext = useOutletContext();
-  // const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-
-  function loadMore() {
-    fetchMorePokemon().then((value) => {
-      context.setPokemons((prev: Pokemon[]) => [...prev, ...value]);
-    });
-  }
+  const { fetchMorePokemon } = usePokemonApi();
 
   return (
     <div className="container-fluid shadow-lg border mt-3 bg-light p-3 d-flex flex-column ">
       <h1 className="text-center display-5 my-3">List of Pokemons</h1>
       <div className=" d-flex p-3 flex-wrap">
-        {context.pokemons.length > 0 ? (
-          context.pokemons.map((pokemon, index) => {
+        {context.searchedPokemons.length > 0 ? (
+          context.searchedPokemons.map((pokemon, index) => {
             return (
               <PokemonDetails pokemon={pokemon} key={index} index={index} />
             );
@@ -39,7 +32,9 @@ export default function PokemonPage() {
         style={{
           boxShadow: "4px 4px 4px 0px blue",
         }}
-        onClick={loadMore}
+        onClick={() => {
+          fetchMorePokemon();
+        }}
       >
         Load more
       </button>

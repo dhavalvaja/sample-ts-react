@@ -11,12 +11,13 @@ export async function fetchPokemon(): Promise<Pokemon[]> {
     index = 1
     const pokemons: Pokemon[] = data.results
         .map((pokemon: any): Pokemon => {
-            const temp = {
+            const temp: Pokemon = {
                 id: index,
                 name: pokemon.name,
                 height: 0,
                 weight: 0,
                 types: [],
+                abilities: [],
                 imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`
             }
             index = index + 1
@@ -27,16 +28,18 @@ export async function fetchPokemon(): Promise<Pokemon[]> {
 
 export async function fetchPokemonByNameOrId(nameOrId: string): Promise<Pokemon> {
     const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon/" + nameOrId)
-    return {
+    const temp: Pokemon = {
         id: data?.id,
         name: data?.name,
         height: data?.height,
         weight: data?.weight,
+        abilities: [],
         types: data.types.map((elemnt: any) => {
             return elemnt.type.name
         }),
         imgUrl: data.sprites.other["official-artwork"]["front_default"]
     }
+    return temp
 }
 
 export async function fetchMorePokemon(): Promise<Pokemon[]> {
@@ -44,12 +47,13 @@ export async function fetchMorePokemon(): Promise<Pokemon[]> {
     nextUrl = data.next
     const pokemons: Pokemon[] = data.results
         .map((pokemon: any): Pokemon => {
-            const temp = {
+            const temp: Pokemon = {
                 id: index,
                 name: pokemon.name,
                 height: 0,
                 weight: 0,
                 types: [],
+                abilities: [],
                 imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`
             }
             index = index + 1

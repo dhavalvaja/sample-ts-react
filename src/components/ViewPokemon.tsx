@@ -1,28 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Pokemon } from "../Pokemon";
-import { useState, useEffect } from "react";
-import { fetchPokemonByNameOrId } from "../PokemonAPI";
+import usePokemonDetailsApi, {
+  usePokemonDetailsApiProps,
+} from "../hooks/usePokemonDetailsApi";
 
 export default function ViewPokemon() {
   const { nameOrId } = useParams();
-  const [pokemon, setPokemon] = useState<Pokemon>();
-  const [error, setError] = useState("");
+  let props: usePokemonDetailsApiProps = nameOrId
+    ? { nameOrId }
+    : { nameOrId: 0 };
+
+  const { error, isLoding, pokemon } = usePokemonDetailsApi(props);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function fetch() {
-      if (nameOrId) {
-        try {
-          const temp = await fetchPokemonByNameOrId(nameOrId);
-          setPokemon(temp);
-        } catch (error: any) {
-          setError(error.response.data);
-        }
-      }
-    }
-    fetch();
-  }, [nameOrId]);
 
   return (
     <>
@@ -47,8 +36,22 @@ export default function ViewPokemon() {
                   );
                 })}
               </p>
+              <p className="fw-semibold">
+                Abilities:
+                {pokemon.abilities.map((ability, index) => {
+                  return (
+                    <span
+                      key={index}
+                      className="ms-2 badge bg-primary text-wrap"
+                    >
+                      {ability}
+                    </span>
+                  );
+                })}
+              </p>
               <p className="fw-semibold">Height: {pokemon.height}</p>
               <p className="fw-semibold">Weight: {pokemon.weight}</p>
+              {/* <p className="fw-semibold">{abilities}</p> */}
               <button
                 className="btn btn-dark "
                 onClick={() => {

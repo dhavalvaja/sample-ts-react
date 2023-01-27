@@ -1,12 +1,13 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ViewPokemon from "./components/ViewPokemon";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AblilitiesPage from "./components/AblilitiesPage";
 import ErrorPage from "./components/ErrorPage";
 import PokemonPage from "./components/PokemonPage";
+import ViewPokemon from "./components/ViewPokemon";
 import HomePage from "./HomePage";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: "viewdetails/:nameOrId",
         element: <ViewPokemon />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "abilities",
+        element: <AblilitiesPage />,
         errorElement: <ErrorPage />,
       },
     ],

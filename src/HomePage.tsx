@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import SearchBar from "./components/SearchBar";
+import usePokemonApi from "./hooks/usePokemonApi";
 import { Pokemon } from "./Pokemon";
-import { fetchMorePokemon, fetchPokemon } from "./PokemonAPI";
 
 export default function HomePage() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  // const [loacalpokemons, setLoacalPokemons] = useState<Pokemon[]>([]);
+  const [searchedPokemons, setSearchedPokemons] = useState<Pokemon[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [msg, setMsg] = useState("Loading...");
 
+  const { error, isLoding, pokemons } = usePokemonApi();
+
+  useEffect(() => {
+    // setLoacalPokemons(pokemons);
+    setSearchedPokemons(pokemons);
+  }, [pokemons]);
+
   const navigate = useNavigate();
 
-  function fetchPokemon1() {
+  function searchPokemon() {
     if (searchQuery !== "") {
       let temp = searchQuery.toLowerCase();
       navigate(`/viewdetails/${temp}`);
@@ -19,17 +28,10 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    fetchPokemonAsyncAwait();
-  }, []);
-
-  async function fetchPokemonAsyncAwait() {
-    try {
-      const pokemons = await fetchPokemon();
-      setPokemons(pokemons);
-    } catch (error: any) {
-      setMsg(error.m);
-    }
-  }
+    setSearchedPokemons([
+      ...pokemons.filter((pokemon) => pokemon.name.startsWith(searchQuery)),
+    ]);
+  }, [pokemons, searchQuery]);
 
   return (
     <>
@@ -42,21 +44,15 @@ export default function HomePage() {
         >
           PokeAPI
         </h1>
-        <div className="d-flex">
-          <input
-            className="form-control"
-            type="text"
-            name="search"
-            id="search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button className="btn btn-secondary mx-3" onClick={fetchPokemon1}>
-            Search
-          </button>
-        </div>
+        <SearchBar
+          pokemons={pokemons}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchPokemon={searchPokemon}
+          setSearchedPokemons={setSearchedPokemons}
+        />
       </div>
-      <Outlet context={{ pokemons, setPokemons, msg }}></Outlet>
+      <Outlet context={{ pokemons, searchedPokemons, msg }}></Outlet>
     </>
   );
 }
