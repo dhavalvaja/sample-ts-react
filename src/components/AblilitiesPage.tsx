@@ -4,15 +4,11 @@ export default function AblilitiesPage() {
   const { abilities, error, isLoding } = usePokemonAbilityApi();
 
   return (
-    <div className="d-flex flex-wrap">
+    <div className="">
       {abilities &&
         abilities.map((ability, index) => {
           return (
-            <div
-              key={index}
-              className="card m-3 p-3"
-              style={{ width: "17rem" }}
-            >
+            <div key={index} className="">
               <h1>{ability.name}</h1>
               <a href={ability.url}>
                 <p>{ability.url}</p>

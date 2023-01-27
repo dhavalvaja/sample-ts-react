@@ -1,21 +1,22 @@
 
-export default function SearchBar({ pokemons, searchQuery, setSearchQuery, searchPokemon, setSearchedPokemons }) {
+export default function SearchBar({ searchQuery, setSearchQuery, searchPokemon, setSearchedPokemons }) {
     return (
-        <div className="d-flex">
+        <form className="navform" onSubmit={searchPokemon}>
             <input
                 autoFocus
-                className="form-control"
+                className="search"
                 type="text"
                 name="search"
                 id="search"
+                placeholder="enter name or Id"
                 value={searchQuery}
                 onChange={(e) => {
                     setSearchQuery(e.target.value)
                 }}
             />
-            <button className="btn btn-secondary mx-3" onClick={searchPokemon}>
+            <button className='btn m-auto mx-2' type="submit">
                 Search
             </button>
-        </div>
+        </form>
     )
 }
