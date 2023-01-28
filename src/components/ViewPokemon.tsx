@@ -16,14 +16,14 @@ export default function ViewPokemon() {
   return (
     <>
       {pokemon ? (
-        <div className="card max-w-fit">
-          <div className="">
+        <div className="pokemonPage">
+          <div className="card max-w-fit mx-auto my-5">
             <img src={pokemon.imgUrl} alt="" />
             <div>
-              <h1 className="">
+              <h1 className="heading3 text-purple-900 border p-3 bg-purple-200">
                 {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
               </h1>
-              <p className="">
+              <p className="txt">
                 Types:
                 {pokemon.types.map((type, index) => {
                   return (
@@ -33,14 +33,14 @@ export default function ViewPokemon() {
                   );
                 })}
               </p>
-              <p className="">
+              <p className="txt">
                 Abilities:
                 {pokemon.abilities.map((ability, index) => {
                   return <span key={index}>{ability}</span>;
                 })}
               </p>
-              <p>Height: {pokemon.height}</p>
-              <p>Weight: {pokemon.weight}</p>
+              <p className="txt">Height: {pokemon.height}</p>
+              <p className="txt">Weight: {pokemon.weight}</p>
               {/* <p >{abilities}</p> */}
               <button
                 className="btn m-3"

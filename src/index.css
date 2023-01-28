@@ -9,11 +9,11 @@ body{
 }
 
 .title{
-    @apply text-5xl font-light tracking-widest my-2 mx-4 cursor-pointer
+    @apply text-5xl font-bold tracking-widest my-2 mx-4 cursor-pointer text-purple-800 
 }
 
 .nav{
-    @apply flex lg:flex-row md:flex-row sm:flex-col align-middle justify-between border p-3 bg-gradient-to-l from-purple-100 shadow-md backdrop-blur-lg
+    @apply flex lg:flex-row md:flex-row sm:flex-col flex-col align-middle justify-between border p-3 bg-gradient-to-l from-purple-100 shadow-md backdrop-blur-lg
 }
 
 .navform{
@@ -26,15 +26,15 @@ body{
     @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 m-auto mx-2
 }
 .pokemonPage{
-    @apply p-6 bg-gradient-to-br from-purple-50 w-full
+    @apply p-6 bg-gradient-to-l from-purple-50 w-full 
 }
 
 .heading{
-    @apply lg:text-5xl md:text-4xl sm:text-3xl font-light text-center mb-5
+    @apply lg:text-5xl md:text-4xl sm:text-3xl font-light text-center mb-5 text-purple-400 
 }
 
 .heading3{
-    @apply lg:text-2xl md:text-xl sm:text-base font-bold text-center mb-5    
+    @apply lg:text-2xl md:text-xl sm:text-base font-bold text-center mb-5 
 
 }
 .pokemonList{
@@ -42,5 +42,13 @@ body{
 }
 
 .card{
-    @apply border rounded-md shadow text-center w-auto min-h-fit backdrop-blur
+    @apply border rounded-md shadow  w-auto min-h-fit backdrop-blur
+}
+
+.txt{
+    @apply text-white tracking-wider m-3
+}
+
+span{
+    @apply mx-2 bg-purple-500 p-1 rounded
 }

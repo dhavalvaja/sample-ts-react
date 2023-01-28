@@ -9,10 +9,10 @@ interface PokemonDetailsProp {
 const PokemonDetails = (props: PokemonDetailsProp) => {
   const { pokemon, index } = props;
   return (
-    <div className="card" key={index}>
+    <div className="card text-center" key={index}>
       <img className="" src={pokemon.imgUrl} alt="" />
       <div className="">
-        <h3 className="heading3">
+        <h3 className="heading3 text-purple-800">
           {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
         </h3>
         <Link to={`/viewdetails/${pokemon.name}`} state={pokemon}>
