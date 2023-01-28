@@ -30,7 +30,7 @@ body{
 }
 
 .heading{
-    @apply lg:text-5xl md:text-4xl sm:text-3xl font-light text-center mb-5 text-purple-400 
+    @apply lg:text-5xl md:text-4xl sm:text-3xl text-center mb-5 text-purple-900 bg-purple-300 p-3 w-fit m-auto rounded-md backdrop-blur
 }
 
 .heading3{
@@ -46,9 +46,9 @@ body{
 }
 
 .txt{
-    @apply text-white tracking-wider m-3
+    @apply text-purple-900 tracking-wider m-3
 }
 
 span{
-    @apply mx-2 bg-purple-500 p-1 rounded
+    @apply mx-2 px-2 py-1 rounded text-white bg-purple-500
 }

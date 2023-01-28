@@ -51,7 +51,7 @@ const usePokemonApi = () => {
     setOffSet(prev => prev + 10)
   }
   function prev() {
-    if (offSet > 10)
+    if (offSet > 0)
       setOffSet(prev => prev - 10)
   }
 
