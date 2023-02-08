@@ -28,7 +28,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          Poke API
+          Dhaval & Aman
         </h1>
         <SearchBar
           searchQuery={searchQuery}
