@@ -27,7 +27,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          Poke API
+          Poemon changedHeading
         </h1>
         <SearchBar
           searchQuery={searchQuery}
