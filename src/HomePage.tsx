@@ -27,7 +27,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          PokemonApi 
+          PokemonApi anything
         </h1>
         <SearchBar
           searchQuery={searchQuery}
