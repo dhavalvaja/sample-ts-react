@@ -27,7 +27,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          Changed by Jaypal & Brijesh
+          Let's make a conflict
         </h1>
         <SearchBar
           searchQuery={searchQuery}
