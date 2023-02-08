@@ -27,7 +27,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          PokenonAPI:-Api where pokemon lives
+          Poke API
         </h1>
         <SearchBar
           searchQuery={searchQuery}
