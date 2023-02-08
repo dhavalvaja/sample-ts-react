@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
-// import usePokemonApi from "./hooks/usePokemonApi";
 import { Pokemon } from "./Pokemon";
 
 export default function HomePage() {
