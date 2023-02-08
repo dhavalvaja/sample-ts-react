@@ -9,6 +9,7 @@ interface PokemonsContext {
   searchedPokemons: Pokemon[];
 }
 
+
 export default function PokemonPage() {
   const context: PokemonsContext = useOutletContext();
   const { prev, next, pokemons } = usePokemonApi();
