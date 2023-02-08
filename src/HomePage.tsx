@@ -27,7 +27,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          Let's make a conflict
+          Pokemon changedHeading
         </h1>
         <SearchBar
           searchQuery={searchQuery}
