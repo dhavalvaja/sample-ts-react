@@ -27,7 +27,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          Poemon changedHeading
+          Pokemon changedHeading
         </h1>
         <SearchBar
           searchQuery={searchQuery}
