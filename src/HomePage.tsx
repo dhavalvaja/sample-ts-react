@@ -28,7 +28,7 @@ export default function HomePage() {
             navigate("/");
           }}
         >
-          Poke API
+          Merge
         </h1>
         <SearchBar
           searchQuery={searchQuery}
