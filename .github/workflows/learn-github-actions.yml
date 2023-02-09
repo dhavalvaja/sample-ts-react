@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
       - run: echo "hello from actions"
       - run: npm install
       - run: eslint src/**/*.ts src/**/*.tsx
