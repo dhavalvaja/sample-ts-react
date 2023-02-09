@@ -9,6 +9,7 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [msg] = useState("Loading...");
 
+  
   const navigate = useNavigate();
 
   function searchPokemon() {
