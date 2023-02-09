@@ -1,8 +1,6 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on:
-  pull_request:
-    types: [opened, reopened]
+on: [pull_request]
 jobs:
   runs-on: ubuntu-latest
   steps:
