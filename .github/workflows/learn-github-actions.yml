@@ -1,6 +1,7 @@
 name: Mahesh
 on: [push]
 jobs:
+  check-bats-version:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
