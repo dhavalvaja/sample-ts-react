@@ -1,4 +1,3 @@
-Learning Git In Incubyte
 
 # Getting Started with Create React App
 
