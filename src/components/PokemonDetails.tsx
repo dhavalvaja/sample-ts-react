@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Pokemon } from "../Pokemon";
+import React from "react";
 
 interface PokemonDetailsProp {
   pokemon: Pokemon;
