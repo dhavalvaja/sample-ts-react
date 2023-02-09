@@ -9,5 +9,4 @@ jobs:
       - uses: actions/setup-node@v3
       - run: echo "hello from actions"
       - run: npm install
-      - run: eslint src/**/*.ts src/**/*.tsx
       - run: npm run lint
